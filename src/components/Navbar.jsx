@@ -7,15 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
     const navRef = useRef(null);
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     useEffect(() => {
         // Initial entrance animation
@@ -33,9 +24,7 @@ export default function Navbar() {
             className={cn(
                 "fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between",
                 "px-6 py-3 rounded-[2rem] w-[90%] md:w-auto md:min-w-[700px] transition-all duration-500",
-                isScrolled
-                    ? "bg-[#F2F0E9]/60 backdrop-blur-xl border border-moss/10 shadow-lg"
-                    : "bg-transparent border-transparent"
+                "bg-[#F2F0E9]/60 backdrop-blur-xl border border-moss/10 shadow-lg"
             )}
         >
             <div className="hidden md:flex items-center gap-8 font-sans text-moss/80 font-medium text-sm">
