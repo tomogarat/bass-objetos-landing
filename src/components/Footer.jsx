@@ -3,7 +3,7 @@ export default function Footer() {
     const wppUrl = `https://wa.me/5491130612030?text=${encodeURIComponent(message)}`;
 
     return (
-        <footer className="bg-charcoal text-cream pt-20 pb-10 px-6 md:px-16 rounded-t-[4rem] relative overflow-hidden z-20 border-t border-[rgba(255,255,255,0.05)]">
+        <footer className="bg-charcoal text-cream pt-20 pb-10 px-6 md:px-16 rounded-t-[4rem] md:rounded-t-none relative overflow-hidden z-20 border-t border-[rgba(255,255,255,0.05)]">
             <div className="max-w-7xl mx-auto flex flex-col">
 
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-20">

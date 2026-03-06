@@ -12,6 +12,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  body {
+    background-color: #fff;
+    color: theme('colors.charcoal');
+  }
+
 }
 
 @layer utilities {

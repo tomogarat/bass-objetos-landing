@@ -57,8 +57,8 @@ export default function LeadCapture() {
                 {/* Fixed height used to stop white spacing. The form natively scrolls inside if needed. */}
                 <div className="w-full bg-white p-0 md:p-8 rounded-none md:rounded-[2.5rem] h-[1050px] md:h-[1150px] relative flex flex-col overflow-hidden w-full m-0">
                     <div
-                        className="w-full h-full flex-1"
-                        dangerouslySetInnerHTML={{ __html: iframeHTML }}
+                        className="w-full h-full flex-1 [&>iframe]:overflow-hidden [&>iframe]:touch-pan-y"
+                        dangerouslySetInnerHTML={{ __html: iframeHTML.replace('scrolling="auto"', 'scrolling="no"') }}
                     />
                 </div>
             </div>
