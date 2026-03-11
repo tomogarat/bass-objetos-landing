@@ -52,7 +52,7 @@ export default function Hero() {
                 <div className="flex flex-col">
                     <h1 className="flex flex-col text-cream">
                         <span className="hero-text font-sans font-bold text-4xl md:text-6xl tracking-tight leading-none mb-2">
-                            El diseño es la
+                            El diseño está en la
                         </span>
                         <span className="hero-text font-serif italic font-medium text-7xl md:text-[8rem] tracking-tight leading-[0.85]">
                             naturaleza.
@@ -60,6 +60,7 @@ export default function Hero() {
                     </h1>
 
                     <p className="hero-text mt-8 max-w-xl text-cream/90 font-outfit font-light text-lg md:text-xl leading-relaxed tracking-tight">
+                        <span className="font-medium text-cream block mb-2">Redefinimos las macetas tradicionales.</span>
                         Jardines verticales modulares para proyectos que no pueden esperar. Entrega inmediata. Sin obra. Sin proveedores múltiples.
                     </p>
 

@@ -47,31 +47,25 @@ export default function Protocol() {
     const cards = [
         {
             step: '01',
-            title: 'Consultá',
-            description: 'Completás el formulario con los detalles del espacio.',
+            title: 'Consulta',
+            description: 'Entendemos lo que necesitás (no solo las macetas sino también asesoramiento de qué plantas poner según el lugar).',
             bg: 'bg-moss',
             color: 'text-cream',
             icon: (
-                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-20 pointer-events-none">
-                    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1" className="w-full h-full">
-                        <circle cx="50" cy="50" r="20" className="anim-circle origin-center" strokeDasharray="4 4" />
-                        <circle cx="50" cy="50" r="35" className="anim-circle origin-center" strokeDasharray="8 4" />
-                        <circle cx="50" cy="50" r="50" className="anim-circle origin-center" />
-                    </svg>
+                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-40 pointer-events-none rounded-full overflow-hidden border-4 border-moss/20">
+                    <img src="/consulta-bass.jpg" alt="Consulta proyecto" className="w-full h-full object-cover" />
                 </div>
             )
         },
         {
             step: '02',
             title: 'Diseñamos juntos',
-            description: 'En 24hs recibís renders y presupuesto cerrado.',
+            description: 'En 24hs recibís renders y presupuesto ajustado.',
             bg: 'bg-cream',
             color: 'text-charcoal',
             icon: (
-                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-10 pointer-events-none overflow-hidden rounded-full">
-                    <div className="w-full h-full relative" style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '10px 10px' }}>
-                        <div className="scan-line absolute top-0 left-0 w-full h-[2px] bg-charcoal shadow-[0_0_10px_currentColor]"></div>
-                    </div>
+                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-80 pointer-events-none rounded-full overflow-hidden border-4 border-cream/50 shadow-lg">
+                    <img src="/diseñamos juntos bass.jpg" alt="Diseño y presupuesto" className="w-full h-full object-cover" />
                 </div>
             )
         },
@@ -82,10 +76,8 @@ export default function Protocol() {
             bg: 'bg-clay',
             color: 'text-cream',
             icon: (
-                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-20 pointer-events-none flex items-center justify-center">
-                    <svg viewBox="0 0 100 50" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-auto">
-                        <path className="ekg-path" strokeDasharray="200" strokeDashoffset="200" d="M0 25 L30 25 L40 5 L50 45 L60 25 L100 25" />
-                    </svg>
+                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-40 pointer-events-none rounded-full overflow-hidden border-4 border-clay/20 shadow-lg">
+                    <img src="/entregamos-bass.jpg" alt="Entrega e instalación" className="w-full h-full object-cover" />
                 </div>
             )
         }

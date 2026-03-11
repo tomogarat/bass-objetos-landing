@@ -18,9 +18,9 @@ const ShufflerCard = () => {
     }, [words.length]);
 
     return (
-        <div className="bg-cream rounded-[2.5rem] p-10 flex flex-col justify-between h-auto min-h-[320px] md:min-h-[460px] border border-charcoal/5 feature-card">
-            <h3 className="font-sans font-bold text-3xl text-charcoal leading-tight mb-8">Diseño de autor,<br />no genérico.</h3>
-            <div className="flex-1 flex flex-col justify-end mt-auto">
+        <div className="bg-cream rounded-[2.5rem] p-10 flex flex-col justify-start h-auto min-h-[320px] md:min-h-[460px] border border-charcoal/5 feature-card">
+            <h3 className="font-sans font-bold text-3xl text-charcoal leading-tight mb-4">Diseño de autor,<br />no genérico.</h3>
+            <div className="w-full mt-2">
                 <div className="text-4xl md:text-5xl font-serif italic text-clay h-[70px] overflow-hidden relative w-full">
                     {words.map((word, i) => (
                         <div
@@ -43,9 +43,9 @@ const TypewriterCard = () => {
     const messages = [
         { icon: <Clock className="w-4 h-4" />, text: "Consulta recibida..." },
         { icon: <Package className="w-4 h-4" />, text: "Módulos en stock confirmados..." },
-        { icon: <Truck className="w-4 h-4" />, text: "Coordinando envío con Mile Logistic..." },
+        { icon: <Truck className="w-4 h-4" />, text: "Coordinando envío..." },
         { icon: <Clock className="w-4 h-4" />, text: "Tiempo de instalación: 10 min..." },
-        { icon: <CheckCircle2 className="w-4 h-4 text-moss" />, text: "Proyecto entregado ✓", highlight: true }
+        { icon: <CheckCircle2 className="w-4 h-4 text-[#8BA895]" />, text: "Proyecto entregado ✓", highlight: true }
     ];
 
     const [visibleMessages, setVisibleMessages] = useState([]);
@@ -79,7 +79,7 @@ const TypewriterCard = () => {
                         className={cn(
                             "flex items-center gap-3 transition-all duration-500",
                             visibleMessages.includes(i) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-                            msg.highlight ? "text-moss bg-moss/10 w-fit px-3 py-1.5 rounded-lg -ml-3 mt-2" : "text-cream/70"
+                            msg.highlight ? "text-[#8BA895] bg-[#8BA895]/10 w-fit px-3 py-1.5 rounded-lg -ml-3 mt-2" : "text-cream/70"
                         )}
                     >
                         {msg.icon} {msg.text}
