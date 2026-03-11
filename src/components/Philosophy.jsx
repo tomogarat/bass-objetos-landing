@@ -42,6 +42,7 @@ export default function Philosophy() {
     return (
         <section
             ref={containerRef}
+            id="nosotros"
             className="relative min-h-[80vh] bg-charcoal text-cream flex items-center justify-center overflow-hidden py-32"
         >
             <div

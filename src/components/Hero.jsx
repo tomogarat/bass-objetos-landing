@@ -35,6 +35,7 @@ export default function Hero() {
     return (
         <section
             ref={containerRef}
+            id="proyectos"
             className="relative h-[100dvh] w-full flex items-end justify-start overflow-hidden bg-charcoal"
         >
             {/* Background Image with Gradient Overlay */}

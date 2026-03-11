@@ -3,20 +3,39 @@ import { createPortal } from 'react-dom';
 import { cn } from '../lib/utils';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLenis } from 'lenis/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function DesktopNavbar() {
+function DesktopNavbar({ onScroll }) {
     return (
         <div className="hidden md:flex items-center gap-8 font-sans text-moss/80 font-medium text-sm">
-            <a href="#nosotros" className="hover:text-moss transition-colors">Nosotros</a>
-            <a href="#como-funciona" className="hover:text-moss transition-colors">Cómo funciona</a>
-            <a href="#proyectos" className="hover:text-moss transition-colors">Proyectos</a>
+            <a
+                href="#nosotros"
+                onClick={(e) => onScroll(e, 'nosotros')}
+                className="hover:text-moss transition-colors"
+            >
+                Nosotros
+            </a>
+            <a
+                href="#como-funciona"
+                onClick={(e) => onScroll(e, 'como-funciona')}
+                className="hover:text-moss transition-colors"
+            >
+                Cómo funciona
+            </a>
+            <a
+                href="#proyectos"
+                onClick={(e) => onScroll(e, 'proyectos')}
+                className="hover:text-moss transition-colors"
+            >
+                Proyectos
+            </a>
         </div>
     );
 }
 
-function MobileNavbar() {
+function MobileNavbar({ onScroll }) {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
@@ -29,6 +48,11 @@ function MobileNavbar() {
             document.body.style.overflow = '';
         };
     }, [isOpen]);
+
+    const handleMobileClick = (e, id) => {
+        setIsOpen(false);
+        onScroll(e, id);
+    };
 
     const drawerContent = (
         <div className="md:hidden">
@@ -60,15 +84,33 @@ function MobileNavbar() {
                 </div>
 
                 <div className="flex flex-col gap-6 text-2xl font-outfit text-charcoal tracking-tight mt-4">
-                    <a href="#nosotros" onClick={() => setIsOpen(false)} className="hover:text-clay transition-colors hover:translate-x-2 transform duration-300 border-b border-black/5 pb-6">Nosotros</a>
-                    <a href="#como-funciona" onClick={() => setIsOpen(false)} className="hover:text-clay transition-colors hover:translate-x-2 transform duration-300 border-b border-black/5 pb-6">Cómo funciona</a>
-                    <a href="#proyectos" onClick={() => setIsOpen(false)} className="hover:text-clay transition-colors hover:translate-x-2 transform duration-300 border-b border-black/5 pb-6">Proyectos</a>
+                    <a
+                        href="#nosotros"
+                        onClick={(e) => handleMobileClick(e, 'nosotros')}
+                        className="hover:text-clay transition-colors hover:translate-x-2 transform duration-300 border-b border-black/5 pb-6"
+                    >
+                        Nosotros
+                    </a>
+                    <a
+                        href="#como-funciona"
+                        onClick={(e) => handleMobileClick(e, 'como-funciona')}
+                        className="hover:text-clay transition-colors hover:translate-x-2 transform duration-300 border-b border-black/5 pb-6"
+                    >
+                        Cómo funciona
+                    </a>
+                    <a
+                        href="#proyectos"
+                        onClick={(e) => handleMobileClick(e, 'proyectos')}
+                        className="hover:text-clay transition-colors hover:translate-x-2 transform duration-300 border-b border-black/5 pb-6"
+                    >
+                        Proyectos
+                    </a>
                 </div>
 
                 <div className="mt-auto pt-8">
                     <a
                         href="#cotizar"
-                        onClick={() => setIsOpen(false)}
+                        onClick={(e) => handleMobileClick(e, 'cotizar')}
                         className="flex justify-center items-center w-full px-5 py-4 bg-clay text-cream rounded-[2rem] font-sans font-medium text-lg transition-transform hover:scale-[1.02]"
                     >
                         Cotizá ahora
@@ -95,6 +137,32 @@ function MobileNavbar() {
 export default function Navbar() {
     const navRef = useRef(null);
     const logoRef = useRef(null);
+    const lenis = useLenis();
+
+    const handleScroll = (e, id) => {
+        if (e) e.preventDefault();
+        const element = document.getElementById(id);
+        if (element && lenis) {
+            lenis.scrollTo(element, {
+                offset: -100, // Account for fixed navbar
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Power4 easeOut
+            });
+            // Update URL hash without jumping
+            window.history.pushState(null, null, `#${id}`);
+        }
+    };
+
+    const scrollToTop = (e) => {
+        if (e) e.preventDefault();
+        if (lenis) {
+            lenis.scrollTo(0, {
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
+            window.history.pushState(null, null, ' ');
+        }
+    };
 
     useEffect(() => {
         // Initial entrance animation applies to the entire header wrapper (or pill specifically)
@@ -117,8 +185,13 @@ export default function Navbar() {
     return (
         <>
             {/* Desktop Logo (Completely outside and Fixed to viewport) */}
-            <div ref={logoRef} className="hidden md:flex absolute fixed left-8 lg:left-12 top-8 lg:top-10 z-[60] h-8 lg:h-10 items-center">
-                <a href="#" className="h-full flex hover:opacity-80 transition-opacity" aria-label="Inicio">
+            <div ref={logoRef} className="hidden md:flex fixed left-8 lg:left-12 top-8 lg:top-10 z-[60] h-8 lg:h-10 items-center">
+                <a
+                    href="#"
+                    onClick={scrollToTop}
+                    className="h-full flex hover:opacity-80 transition-opacity"
+                    aria-label="Inicio"
+                >
                     <img src="/logo.jpg" alt="Bass Objetos" className="h-[120%] lg:h-[130%] w-auto mix-blend-multiply opacity-90 rounded-sm -mt-2" />
                 </a>
             </div>
@@ -131,8 +204,8 @@ export default function Navbar() {
                     "bg-[#F2F0E9]/80 md:bg-[#F2F0E9]/60 backdrop-blur-xl border border-moss/10 shadow-lg"
                 )}
             >
-                <MobileNavbar />
-                <DesktopNavbar />
+                <MobileNavbar onScroll={handleScroll} />
+                <DesktopNavbar onScroll={handleScroll} />
 
                 {/* Mobile center logo */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden pointer-events-none">
@@ -141,6 +214,7 @@ export default function Navbar() {
 
                 <a
                     href="#cotizar"
+                    onClick={(e) => handleScroll(e, 'cotizar')}
                     className={cn(
                         "ml-auto px-5 py-2 md:py-2.5 bg-clay text-cream rounded-[2rem] font-sans font-medium text-[13px] md:text-sm",
                         "overflow-hidden relative group transition-transform duration-300 hover:scale-[1.03] shrink-0 whitespace-nowrap"
