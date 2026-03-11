@@ -52,7 +52,7 @@ export default function Protocol() {
             bg: 'bg-moss',
             color: 'text-cream',
             icon: (
-                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-40 pointer-events-none rounded-full overflow-hidden border-4 border-moss/20">
+                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-80 pointer-events-none rounded-full overflow-hidden border-4 border-moss/20 shadow-lg">
                     <img src="/consulta-bass.jpg" alt="Consulta proyecto" className="w-full h-full object-cover" />
                 </div>
             )
@@ -76,7 +76,7 @@ export default function Protocol() {
             bg: 'bg-clay',
             color: 'text-cream',
             icon: (
-                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-40 pointer-events-none rounded-full overflow-hidden border-4 border-clay/20 shadow-lg">
+                <div className="absolute -right-8 -top-8 w-48 h-48 opacity-80 pointer-events-none rounded-full overflow-hidden border-4 border-clay/20 shadow-lg">
                     <img src="/entregamos-bass.jpg" alt="Entrega e instalación" className="w-full h-full object-cover" />
                 </div>
             )
