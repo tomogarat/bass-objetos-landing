@@ -65,7 +65,7 @@ export default function Protocol() {
             color: 'text-charcoal',
             icon: (
                 <div className="absolute -right-8 -top-8 w-48 h-48 opacity-80 pointer-events-none rounded-full overflow-hidden border-4 border-cream/50 shadow-lg">
-                    <img src="/diseñamos juntos bass.jpg" alt="Diseño y presupuesto" className="w-full h-full object-cover" />
+                    <img src="/disenamos-juntos-bass.jpg" alt="Diseño y presupuesto" className="w-full h-full object-cover" />
                 </div>
             )
         },
